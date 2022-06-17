@@ -1,5 +1,7 @@
+const db = require('../../data/dbConfig');
+
 async function findAll(){
-    return Promise.resolve([{ message: 'resource model' }]);
+    return db('resources');
 }
 
 async function insert(body){
