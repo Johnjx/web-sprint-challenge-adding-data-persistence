@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const projectModel = require('./model');
+const projMW = require('./middleware');
 
 router.get('/', (req, res, next) => {
     projectModel.findAll()
@@ -7,7 +8,7 @@ router.get('/', (req, res, next) => {
     .catch(next);
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', projMW.validateProjName, (req, res, next) => {
     projectModel.insert(req.body)
     .then(newProject => res.status(201).send(newProject))
     .catch(next);
