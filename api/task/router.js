@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const taskModel = require('./model');
+const taskMW = require('./middleware');
 
 router.get('/', (req, res, next) => {
     taskModel.findAll()
@@ -7,7 +8,7 @@ router.get('/', (req, res, next) => {
     .catch(next);
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', taskMW.validateTask, (req, res, next) => {
     taskModel.insert(req.body)
     .then(newTask => res.status(201).send(newTask))
     .catch(next);
