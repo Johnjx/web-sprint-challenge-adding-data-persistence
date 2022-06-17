@@ -4,7 +4,7 @@ const taskMW = require('./middleware');
 
 router.get('/', (req, res, next) => {
     taskModel.findAll()
-    .then(result => res.send(result))
+    .then(tasks => res.send(tasks))
     .catch(next);
 })
 

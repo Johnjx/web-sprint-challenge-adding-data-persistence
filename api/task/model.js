@@ -1,7 +1,18 @@
 const db = require('../../data/dbConfig');
 
 async function findAll(){
-    return Promise.resolve([{ message: 'task model' }]);
+    const results = await db('tasks as t')
+        .join('projects as p', 't.project_id', 'p.project_id')
+        .select('task_id', 'task_description',
+                'task_notes', 'task_completed',
+                'project_name', 'project_description');
+
+    const tasks = results.map(task => ({
+        ...task,
+        task_completed: task.task_completed ? true : false
+    }));
+
+    return tasks;
 }
 
 function insert(task){
