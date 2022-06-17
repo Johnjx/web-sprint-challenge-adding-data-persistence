@@ -1,10 +1,12 @@
 const express = require('express');
+const resourceRouter = require('./resource/router');
 
 const server = express();
 server.use(express.json());
+server.use('/api/resources', resourceRouter);
 
 server.use('*', (req, res) => {
-    res.status(404).json({ message: '404 Not Found'})
+    res.status(404).json({ message: '404 Not Found'});
 })
 
 server.use((err, req, res, next) => { // eslint-disable-line
