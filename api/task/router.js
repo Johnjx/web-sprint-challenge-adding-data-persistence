@@ -8,8 +8,8 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    taskModel.insert('test')
-    .then(result => res.status(201).send(result))
+    taskModel.insert(req.body)
+    .then(newTask => res.status(201).send(newTask))
     .catch(next);
 })
 
