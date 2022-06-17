@@ -3,7 +3,7 @@ const projectModel = require('./model');
 
 router.get('/', (req, res, next) => {
     projectModel.findAll()
-    .then(result => res.send(result))
+    .then(projects => res.send(projects))
     .catch(next);
 })
 
