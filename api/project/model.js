@@ -11,8 +11,17 @@ function findAll(){
     .catch(err => err)
 }
 
-async function insert(body){
-    return Promise.resolve({ message: `project model new insert ${body}` });
+function insert(project){
+    return db('projects')
+        .insert(project)
+        .then(([project_id]) => db('projects').where({ project_id }))
+        .then(newProj => 
+            newProj.map(proj => ({
+                ...proj,
+                project_completed: proj.project_completed ? true : false
+            }))[0]    
+        )
+        .catch(err => err)
 }
 
 module.exports = {

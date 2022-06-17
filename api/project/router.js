@@ -8,8 +8,8 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    projectModel.insert('test')
-    .then(result => res.status(201).send(result))
+    projectModel.insert(req.body)
+    .then(newProject => res.status(201).send(newProject))
     .catch(next);
 })
 
