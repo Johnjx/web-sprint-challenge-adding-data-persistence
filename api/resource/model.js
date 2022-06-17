@@ -4,8 +4,14 @@ async function findAll(){
     return db('resources');
 }
 
-async function insert(body){
-    return Promise.resolve({ message: `resource model new insert ${body}` });
+function insert(resource){
+    return db('resources')
+    .insert(resource)
+    .then(([resource_id]) => {
+        return db('resources')
+        .where({ resource_id })
+        .first();
+    });
 }
 
 module.exports = {

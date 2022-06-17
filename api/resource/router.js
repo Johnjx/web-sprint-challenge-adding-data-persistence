@@ -8,8 +8,8 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    resourceModel.insert('test')
-    .then(result => res.status(201).send(result))
+    resourceModel.insert(req.body)
+    .then(newResource => res.status(201).send(newResource))
     .catch(next);
 })
 
