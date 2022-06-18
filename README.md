@@ -111,6 +111,17 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
+
+Relational Databases are a type of database where digital data is stored in tables made up of rows and columns. These tables have relationships with each other that can be explored to provide greater context around the scope of each data point. SQL, on the other hand, is a query language that is commonly associated with relational databases as the primary way to access and manipulate their data. The language inherently excels at performing complex operations on relational tables that would otherwise be inefficient and difficult using a programming language. 
+
 2. Why do tables need a Primary Key?
+
+Each table needs a primary key column to allow each entry to be identified uniquely, despite sharing any data with other rows in the same table. Moreover, this key is how partner tables can form a relationship with said table.
+
 3. What is the name given to a table column that references the Primary Key on another table?
+
+A referencing table column is called a foreign key column. A foreign key combined with a primary key is the key to a relation in Relational database systems. Each entry in a foreign key column must match the primary key of an entry in the parent table.
+
 4. What do we need in order to have a _many to many_ relationship between two tables?
+
+When the situation arises such that entities from two different tables are related in multiple ways, bi-directionally, then a third table is needed to manage that relationship. Sometimes called an intermediary table, this table will contain two foreign keys to represent both tables involved. Thus, the intermediary table is dedicated to holding all the instances where tables A and B are related, abstracting that information from the primary tables of interest.
